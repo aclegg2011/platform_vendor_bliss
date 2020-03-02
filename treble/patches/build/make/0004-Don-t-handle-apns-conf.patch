@@ -1,0 +1,57 @@
+From 66b4fc230f11abfaac3c0ca0715f4add10b00fb5 Mon Sep 17 00:00:00 2001
+From: Aren Clegg <aclegg2011@gmail.com>
+Date: Mon, 2 Mar 2020 18:30:18 +0000
+Subject: [PATCH] Don't handle apns-conf
+
+Change-Id: I22a00a7150eedfb8f37079c5a85e2d65eeb70e13
+---
+ target/product/full_base_telephony.mk | 5 -----
+ target/product/gsi_common.mk          | 6 ------
+ target/product/mainline.mk            | 1 -
+ 3 files changed, 12 deletions(-)
+
+diff --git a/target/product/full_base_telephony.mk b/target/product/full_base_telephony.mk
+index b6b87c706..8f3007afa 100644
+--- a/target/product/full_base_telephony.mk
++++ b/target/product/full_base_telephony.mk
+@@ -26,10 +26,5 @@ PRODUCT_PROPERTY_OVERRIDES := \
+ PRODUCT_COPY_FILES := \
+     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
+ 
+-ifeq ($(BLISS_BUILD),)
+-PRODUCT_COPY_FILES += \
+-    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
+-endif
+-
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+diff --git a/target/product/gsi_common.mk b/target/product/gsi_common.mk
+index 2a63edf8d..47edb3403 100644
+--- a/target/product/gsi_common.mk
++++ b/target/product/gsi_common.mk
+@@ -88,12 +88,6 @@ PRODUCT_PACKAGES += \
+     WAPPushManager \
+     WallpaperPicker \
+ 
+-# Telephony:
+-#   Provide a APN configuration to GSI product
+-PRODUCT_COPY_FILES += \
+-    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+ endif
+-
+ # NFC:
+ #   Provide a libnfc-nci.conf to GSI product
+ PRODUCT_COPY_FILES += \
+diff --git a/target/product/mainline.mk b/target/product/mainline.mk
+index 667f0bbb0..9f3a1094e 100644
+--- a/target/product/mainline.mk
++++ b/target/product/mainline.mk
+@@ -35,5 +35,4 @@ PRODUCT_PACKAGES += \
+     PhotoTable \
+     WallpaperPicker \
+ 
+-PRODUCT_COPY_FILES += device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+ endif
+-- 
+2.20.1
+
