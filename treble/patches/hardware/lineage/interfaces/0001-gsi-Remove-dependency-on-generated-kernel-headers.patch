@@ -1,0 +1,26 @@
+From b93f47835d6274e4da24f7e7c9bd89b13964446d Mon Sep 17 00:00:00 2001
+From: Aren Clegg <aclegg2011@gmail.com>
+Date: Mon, 2 Mar 2020 17:36:19 +0000
+Subject: [PATCH] gsi: Remove dependency on generated kernel headers
+
+Change-Id: Iee4d22f3bc82cba64f705fcd720e80aa76d56153
+---
+ cryptfshw/1.0/Android.bp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cryptfshw/1.0/Android.bp b/cryptfshw/1.0/Android.bp
+index 3f36424..562fc55 100644
+--- a/cryptfshw/1.0/Android.bp
++++ b/cryptfshw/1.0/Android.bp
+@@ -15,7 +15,7 @@
+ cc_binary {
+     name: "vendor.qti.hardware.cryptfshw@1.0-service-qti.lineage",
+     defaults: ["hidl_defaults"],
+-    header_libs: ["generated_kernel_headers"],
++    header_libs: ["device_kernel_headers"],
+     init_rc: ["vendor.qti.hardware.cryptfshw@1.0-service-qti.lineage.rc"],
+     owner: "qti",
+     product_variables: {
+-- 
+2.20.1
+

@@ -1,0 +1,39 @@
+From 11f76d793fdeb426392d3147d38f2cafa89b8feb Mon Sep 17 00:00:00 2001
+From: Aren Clegg <aclegg2011@gmail.com>
+Date: Mon, 2 Mar 2020 16:47:12 +0000
+Subject: [PATCH] gsi: remove call to roomservice.py
+
+Change-Id: I81f571c3f50c8287732bbfff65c9f6471eae926e
+---
+ envsetup.sh | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/envsetup.sh b/envsetup.sh
+index 718716e6e..e2307042f 100644
+--- a/envsetup.sh
++++ b/envsetup.sh
+@@ -653,21 +653,6 @@ function lunch()
+     fi
+ 
+     check_product $product
+-    if [ $? -ne 0 ]
+-    then
+-        # if we can't find a product, try to grab it off the BlissRoms GitHub
+-        T=$(gettop)
+-        cd $T > /dev/null
+-        vendor/bliss/build/tools/roomservice.py $product
+-        cd - > /dev/null
+-        check_product $product
+-    else
+-        T=$(gettop)
+-        cd $T > /dev/null
+-        vendor/bliss/build/tools/roomservice.py $product true
+-        cd - > /dev/null
+-    fi
+-
+     TARGET_PRODUCT=$product \
+     TARGET_BUILD_VARIANT=$variant \
+     TARGET_PLATFORM_VERSION=$version \
+-- 
+2.20.1
+
