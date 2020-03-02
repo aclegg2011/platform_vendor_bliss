@@ -1,14 +1,15 @@
-From 9c57df342f669c52b4f6cccab4e33909638860b1 Mon Sep 17 00:00:00 2001
+From 9ff440d439813f193cd8fb11ba9369c13949ad42 Mon Sep 17 00:00:00 2001
 From: Aren Clegg <aclegg2011@gmail.com>
 Date: Mon, 2 Mar 2020 19:38:54 +0000
 Subject: [PATCH] don't handle apns conf
 
 Change-Id: I66853aaf4e5322636f095e9b19e179b288514c57
+Signed-off-by: Aren Clegg <aclegg2011@gmail.com>
 ---
  target/product/full_base_telephony.mk | 5 -----
- target/product/gsi_common.mk          | 5 -----
+ target/product/gsi_common.mk          | 6 +-----
  target/product/mainline.mk            | 1 -
- 3 files changed, 11 deletions(-)
+ 3 files changed, 1 insertion(+), 11 deletions(-)
 
 diff --git a/target/product/full_base_telephony.mk b/target/product/full_base_telephony.mk
 index b6b87c706..8f3007afa 100644
@@ -26,14 +27,16 @@ index b6b87c706..8f3007afa 100644
  $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
  $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 diff --git a/target/product/gsi_common.mk b/target/product/gsi_common.mk
-index 2a63edf8d..58748257a 100644
+index 2a63edf8d..bfdee9917 100644
 --- a/target/product/gsi_common.mk
 +++ b/target/product/gsi_common.mk
-@@ -87,11 +87,6 @@ PRODUCT_PACKAGES += \
+@@ -86,12 +86,8 @@ PRODUCT_PACKAGES += \
+     messaging \
      PhotoTable \
      WAPPushManager \
-     WallpaperPicker \
--
+-    WallpaperPicker \
++    WallpaperPicker
+ 
 -# Telephony:
 -#   Provide a APN configuration to GSI product
 -PRODUCT_COPY_FILES += \
